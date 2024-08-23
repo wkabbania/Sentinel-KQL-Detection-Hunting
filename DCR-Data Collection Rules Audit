@@ -1,4 +1,5 @@
-Data Collection Rules Poses great security impact on visibility when it comes to SOC monitoring via Microsof Sentinel. Auditing changes to DCRs, ensuring that any additions, removals, or modifications are detected and alerted to the SOC for visibility review.
+Data Collection Rules Poses great security impact on visibility when it comes to SOC monitoring via Microsof Sentinel. 
+Auditing changes to DCRs, ensuring that any additions, removals, or modifications are detected and alerted to the SOC for visibility review.
 
 ## For getting the logs related to Data Collection Rules in general you can use the below query
 AzureActivity | where OperationNameValue startswith "MICROSOFT.INSIGHTS/DATACOLLECTIONRULE"
