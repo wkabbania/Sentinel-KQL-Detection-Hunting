@@ -1,0 +1,20 @@
+Data Collection Rules Poses great security impact on visibility when it comes to SOC monitoring via Microsof Sentinel. Auditing changes to DCRs, ensuring that any additions, removals, or modifications are detected and alerted to the SOC for visibility review.
+
+## For getting the logs related to Data Collection Rules in general you can use the below query
+AzureActivity | where OperationNameValue startswith "MICROSOFT.INSIGHTS/DATACOLLECTIONRULE"
+
+## For Getting the Logs Related to Data Collection Rules Association changes:
+AzureActivity | where OperationNameValue startswith "MICROSOFT.INSIGHTS/DATACOLLECTIONRULEASSOCIATIONS/"
+
+## Rule 1: Data Collection Rule Successfully Deleted
+AzureActivity | where OperationNameValue == "MICROSOFT.INSIGHTS/DATACOLLECTIONRULES/DELETE" | where ActivityStatusValue == "Success"
+
+## Rule 2: Failed Attempt to Delete Data Collection Rule
+AzureActivity | where OperationNameValue == "MICROSOFT.INSIGHTS/DATACOLLECTIONRULES/DELETE" | where ActivityStatusValue == "Failure"
+
+## Rule 3 : Data Collection Rule Association Deleted Successfully
+AzureActivity | where OperationNameValue == "MICROSOFT.INSIGHTS/DATACOLLECTIONRULEASSOCIATIONS/DELETE" | where ActivityStatusValue =="Success"
+
+## Rule 4 :  Data Collection Rule Modified Successfully
+AzureActivity | where OperationNameValue == "MICROSOFT.INSIGHTS/DATACOLLECTIONRULES/WRITE" | where ActivityStatusValue =="Success"
+
